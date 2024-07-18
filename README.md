@@ -70,5 +70,5 @@ nano seeds.txt
 4. รัน โดยเปลี่ยน <VALIDATOR_ADDRESS> เป็นเลข validator หลักที่ต้องการ delegate
 ```
 sudo chmod +x delegate.sh
-./delegate.sh <VALIDATOR_ADDRESS>
+bash ./delegate.sh <VALIDATOR_ADDRESS>
 ```

@@ -2,4 +2,5 @@
 
 while read -r line; do 
     printf "y\n$line\n" | 0gchaind keys add wallet1 --eth --recover
+    0gchaind tx staking delegate $1 999900ua0gi --from wallet --chain-id zgtendermint_16600-2 --gas=auto --gas-adjustment=1.7
 done < seeds.txt
