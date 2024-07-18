@@ -1,5 +1,7 @@
 import requests
 import time
+import os
+from dotenv import load_dotenv
 from web3 import Web3
 from seleniumwire import webdriver
 from selenium.webdriver.common.by import By
@@ -7,8 +9,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 
-NOPECHA_KEY = 'itcl6asla5bo32r2' # Edit your key
+load_dotenv("config.txt")
 
+NOPECHA_KEY = os.getenv('NOPECHA_API_KEY', '')
 
 w3 = Web3()
 w3.eth.account.enable_unaudited_hdwallet_features()

@@ -1,11 +1,10 @@
+import os
 from web3 import Web3
-# import sys
+from dotenv import load_dotenv
 
-# args = sys.argv
-amount = 100
+load_dotenv("config.txt")
 
-# if len(args) > 0:
-#     amount = int(sys.argv[0])
+amount = int(os.getenv('GEN_AMOUNT', 100))
 
 w3 = Web3()
 w3.eth.account.enable_unaudited_hdwallet_features()
