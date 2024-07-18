@@ -132,5 +132,5 @@ config.txt
 keys.txt
 addrs.txt
 seeds.txt
-ext.crt
+ext.crx
 proxy.txt
