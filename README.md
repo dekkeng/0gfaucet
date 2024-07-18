@@ -48,4 +48,27 @@ python faucet.py
 
 จะเป็นส่วนของการ delegate แต่ละกระเป๋าไปที่ node หลัก
 
-... TBD ...
+1. รัน
+```
+apt install -y git
+git clone https://github.com/dekkeng/0gfaucet.git
+cd 0gfaucet
+```
+
+2. รัน
+```
+printf "ketchup answer sudden fruit head edge vocal slight control salmon bonus journey\n" | 0gchaind keys add wallet1 --eth --recover
+```
+
+3. Copy ข้อมูลจาก `seeds.txt` บน desktop ที่รันไปด้านบน มาใส่ใน VPS folder เดียวกัน
+```
+nano seeds.txt
+```
+วางข้อมูล
+แล้ว Ctrl + X , Y , enter
+
+4. รัน โดยเปลี่ยน <VALIDATOR_ADDRESS> เป็นเลข validator หลักที่ต้องการ delegate
+```
+sudo chmod +x delegate.sh
+./delegate.sh <VALIDATOR_ADDRESS>
+```
