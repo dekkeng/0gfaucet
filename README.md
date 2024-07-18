@@ -39,7 +39,7 @@ python gen.py
 ส่วนของ Desktop ขอ Faucet
 -------------------
 
-1. ใช้ Tor Browser ที่ติดตั้ง Extension Nopecha และเปิด Private browsing เป็น On ให้ extension ด้วย
+1. ใช้ Tor Browser ที่ติดตั้ง Extension Nopecha และใส่ API key บน Extension เปลี่ยนใหม่ทุกวัน
 
 2. เข้า https://faucet.0g.ai/
 
