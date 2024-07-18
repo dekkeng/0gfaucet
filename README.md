@@ -1,9 +1,7 @@
 # 0g faucet
 
-แบ่งเป็น 2 ส่วน ส่วนที่รันบน Desktop อีกส่วนรันบน VPS 0g node
-
 -------------------
-ส่วนของ Desktop
+ส่วนของ Desktop Gen Wallet
 -------------------
 
 ต้องมีรัน 0g node ที่ sync เรียบร้อยแล้ว
@@ -37,10 +35,15 @@ socks5://user2:pass2@111.11.11.12:1112
 python gen.py
 ```
 
-7. รันเพื่อขอ faucet
-```
-python faucet.py
-```
+-------------------
+ส่วนของ Desktop ขอ Faucet
+-------------------
+
+1. ใช้ Tor Browser ที่ติดตั้ง Extension Nopecha และเปิด Private browsing เป็น On ให้ extension ด้วย
+
+2. เข้า https://faucet.0g.ai/
+
+3. รัน torauto.py
 
 -------------------
 ส่วนของ VPS
