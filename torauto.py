@@ -91,12 +91,14 @@ def main():
     try:
         f = open("addrs.txt", "r")
         lines = f.readlines()
-
+        count = 1
+        total = len(lines)
         for addr in lines:
             addr = addr.replace("\n", "")
-            tor.log(f'Getting faucet of account={addr}...')
+            tor.log(f'[{count}/{total}] Getting faucet of account={addr}...')
             tor.start(addr)
             tor.refreshTor()
+            count = count+1
     except Exception as e:
         tor.log(e)
         pass
