@@ -35,7 +35,6 @@ class Tor:
                 self.wait(3)
                 
             if self.fail != None or self.success != None:
-                self.refreshTor()
                 break
 
             self.wait(5)
@@ -94,6 +93,7 @@ def main():
             addr = addr.replace("\n", "")
             tor.log(f'Getting faucet of account={addr}...')
             tor.start(addr)
+            tor.refreshTor()
     except Exception as e:
         tor.log(e)
         pass
