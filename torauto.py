@@ -9,39 +9,37 @@ import random
 load_dotenv("config.txt")
 
 class Tor:
-    def updatePos(self):
+    def updatePos(self, addr):
         #self.log(f'Getting position...')
+        self.addr = addr
         self.address_input = self.getPos("address_input")
         self.request_btn = self.getPos("request_btn")
-        
-    def start(self):        
-        f = open("addrs.txt", "r")
-        lines = f.readlines()
+        self.fail = self.getPos("fail")
+        self.success = self.getPos("success")
+ 
+    def start(self):            
+        timeout = time.time() + 60*30   # 30 minutes from now
+        while True:
+            if time.time() > timeout:
+                break
 
-        for addr in lines:
-            addr = addr.replace("\n", "")
-            self.log(f'Getting faucet of account={addr}...')
-            
-            timeout = time.time() + 60*30   # 30 minutes from now
-            while True:
-                if time.time() > timeout:
-                    break
-
+            self.updatePos()
+            if self.request_btn != None:
+                self.log(f'Request ready')
                 self.updatePos()
-                if self.request_btn != None:
-                    self.log(f'Request ready')
-                    self.updatePos()
-                    if self.address_input != None:
-                        self.log(f'Address input')
-                        self.click(self.address_input)
-                        self.wait(0.5)
-                        self.key(addr)
-                        self.wait(1)
-                    self.click(self.request_btn)
-                    self.wait(3)
-                    self.refreshTor()
+                if self.address_input != None:
+                    self.log(f'Address input')
+                    self.click(self.address_input)
+                    self.wait(1)
+                    self.key(self.addr)
+                    self.wait(1)
+                self.click(self.request_btn)
+                self.wait(3)
+                
+            if self.fail != None or self.success != None:
+                self.refreshTor()
 
-                self.wait(5)
+            self.wait(5)
 
     def getPos(self, file, conf = 0.95):
         return pyautogui.locateCenterOnScreen('./sample/'+file+'.png', confidence = conf)
@@ -84,11 +82,19 @@ class Tor:
 
 time.sleep(3)
 
-tor = Tor()
+def main():
+    tor = Tor()
 
-try:
-    while True:
-        tor.start()
-except Exception as e:
-    tor.log(e)
-    pass
+    f = open("addrs.txt", "r")
+    lines = f.readlines()
+
+    for addr in lines:
+        try:
+            addr = addr.replace("\n", "")
+            tor.log(f'Getting faucet of account={addr}...')
+            tor.start(addr)
+        except Exception as e:
+            tor.log(e)
+            pass
+
+main()
