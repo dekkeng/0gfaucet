@@ -20,7 +20,6 @@ pip install -r requirements.txt
 
 4. แก้ไขไฟล์ config.txt
 ```
-NOPECHA_API_KEY ให้ใส่ api key ของ nopecha
 GEN_AMOUNT คือจำนวนกระเป๋าที่ต้องการสร้างต่อครั้งที่รัน gen
 ```
 
@@ -34,6 +33,17 @@ socks5://user2:pass2@111.11.11.12:1112
 ```
 python gen.py
 ```
+
+-------------------
+วิธีขอ Key Nopecha
+-------------------
+
+เข้าดิส https://nopecha.com/discord
+รอ 5 นาที
+ไปห้อง ⁠NopeSupport⁠free-key-discord แล้วพิมพ์ !nopecha
+อย่าลืมเปิด DM ด้วย บอทจะส่ง key มาใน DM
+
+โค้ดใช้ได้วันเดียว 100 ครั้ง 24 ชม. ต้องมาขอใหม่ไปใช้ทุกวัน
 
 -------------------
 ส่วนของ Desktop ขอ Faucet
