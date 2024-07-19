@@ -86,8 +86,9 @@ class Tor:
 
 time.sleep(3)
 
+tor = Tor()
+
 try:
-    tor = Tor()
     while True:
         tor.start()
 except Exception as e:
