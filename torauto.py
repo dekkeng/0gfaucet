@@ -9,6 +9,9 @@ import random
 load_dotenv("config.txt")
 
 class Tor:
+    def __init__(self):
+        self.TOR_TIMEOUT = float(os.getenv('TOR_TIMEOUT', 30))
+
     def updatePos(self):
         #self.log(f'Getting position...')
         self.address_input = self.getPos("address_input")
@@ -16,10 +19,10 @@ class Tor:
         self.fail = self.getPos("fail")
         self.success = self.getPos("success")
  
-    def start(self, addr):            
-        timeout = time.time() + 60*30   # 30 minutes from now
+    def start(self, addr):
+        timeout = time.time() + 60*self.TOR_TIMEOUT
         while True:
-            if time.time() > timeout:
+            if self.TOR_TIMEOUT != 0 and time.time() > timeout:
                 break
 
             self.updatePos()

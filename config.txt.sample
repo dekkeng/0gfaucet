@@ -1,2 +1,3 @@
 NOPECHA_API_KEY     =   "abcdefg"
 GEN_AMOUNT          =   100
+TOR_TIMEOUT         =   30
