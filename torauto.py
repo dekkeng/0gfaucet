@@ -37,7 +37,12 @@ class Tor:
                 self.click(self.request_btn)
                 self.wait(3)
                 
-            if self.fail != None or self.success != None:
+            if self.fail != None:
+                self.click(self.fail)
+                break
+            
+            if self.success != None:
+                self.click(self.success)
                 break
 
             self.wait(5)
