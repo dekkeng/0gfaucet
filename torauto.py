@@ -25,7 +25,6 @@ class Tor:
             self.updatePos()
             if self.request_btn != None:
                 self.log(f'Request ready')
-                self.updatePos()
                 if self.address_input != None:
                     self.log(f'Address input')
                     self.click(self.address_input)
