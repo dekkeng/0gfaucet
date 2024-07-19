@@ -1,12 +1,17 @@
 # 0g faucet
 
+----------------------------
+จัดทำเพื่อการเรียนรู้เท่านั้น ไม่สนับสนุนให้นำไปใช้ปั๊มจริงจัง เพราะมีโอกาสโดนแบนสูง
+ต้องการ Donate เพื่อเป็นค่าชานมให้ผมได้ทุกเหรียญบน OP, ARB, LINEA, BASE chain เลขกระเป๋า 0x8518DeaBD60cf3d8876463DA1471F81fE583c1Cd
+----------------------------
+
 -------------------
 ส่วนของ Desktop Gen Wallet
 -------------------
 
 ต้องมีรัน 0g node ที่ sync เรียบร้อยแล้ว
 
-1. ติดตั้ง python, git, ต้องมี chrome ในเครื่องลงไว้
+1. ติดตั้ง python (แนะนำ 3.10), git, ต้องมี Tor Browser ในเครื่องลงไว้
 
 2. เปิด Powershell, หรือ Terminal
 
@@ -15,6 +20,7 @@
 git clone https://github.com/dekkeng/0gfaucet.git && cd 0gfaucet
 cp proxy.txt.sample proxy.txt
 cp config.txt.sample config.txt
+cp -r sample.sample sample
 pip install -r requirements.txt
 ```
 
@@ -37,6 +43,10 @@ python gen.py
 -------------------
 วิธีขอ Key Nopecha
 -------------------
+
+แนะนำให้สมัครรายเดือน จะเร็วและแม่นยำกว่า
+
+หรือหากต้องการทดลอง สามารถใช้ key free ได้
 
 เข้าดิส https://nopecha.com/discord
 รอ 5 นาที
