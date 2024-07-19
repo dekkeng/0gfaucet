@@ -10,7 +10,7 @@ load_dotenv("config.txt")
 
 class Tor:
     def updatePos(self):
-        #self.log(f'Getting position...')
+        self.log(f'Getting position...')
         self.address_input = self.getPos("address_input")
         self.request_btn = self.getPos("request_btn")
         self.fail = self.getPos("fail")
@@ -37,6 +37,7 @@ class Tor:
                 
             if self.fail != None or self.success != None:
                 self.refreshTor()
+                break
 
             self.wait(5)
 
@@ -83,17 +84,16 @@ time.sleep(3)
 
 def main():
     tor = Tor()
+    try:
+        f = open("addrs.txt", "r")
+        lines = f.readlines()
 
-    f = open("addrs.txt", "r")
-    lines = f.readlines()
-
-    for addr in lines:
-        try:
+        for addr in lines:
             addr = addr.replace("\n", "")
             tor.log(f'Getting faucet of account={addr}...')
             tor.start(addr)
-        except Exception as e:
-            tor.log(e)
-            pass
+    except Exception as e:
+        tor.log(e)
+        pass
 
 main()
