@@ -2,7 +2,6 @@ import os, pyautogui, pyscreeze
 import time
 from datetime import datetime
 from dotenv import load_dotenv
-import random
 
 #pyautogui.PAUSE=0
 
@@ -66,6 +65,10 @@ class Tor:
         pyautogui.keyUp('Shift')
         self.wait(5)
 
+    def quitTor(self):        
+        self.log('Quit Tor')
+        pyautogui.hotkey('alt', 'f4')
+
     def key(self, msg):
         self.log(f'Key {msg}')
         pyautogui.typewrite(msg)
@@ -92,7 +95,12 @@ class Tor:
 time.sleep(3)
 
 def main():
+    TOR_PATH = os.getenv('TOR_PATH', 'C:/Users/WIN/Desktop/Tor Browser/Browser/firefox.exe')
+    os.startfile(TOR_PATH)
+    time.sleep(10) 
+    
     tor = Tor()
+    
     try:
         f = open("addrs.txt", "r")
         lines = f.readlines()
@@ -103,7 +111,8 @@ def main():
             tor.log(f'[{count}/{total}] Getting faucet of account={addr}...')
             tor.start(addr)
             tor.refreshTor()
-            count = count+1
+            count = count+1        
+        tor.quitTor()
     except Exception as e:
         tor.log(e)
         pass
