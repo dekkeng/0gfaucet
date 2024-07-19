@@ -9,9 +9,6 @@ import random
 load_dotenv("config.txt")
 
 class Tor:
-    def __init__(self):
-        self.updatePos()
-
     def updatePos(self):
         #self.log(f'Getting position...')
         self.address_input = self.getPos("address_input")
