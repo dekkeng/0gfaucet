@@ -13,7 +13,7 @@ class Tor:
         self.updatePos()
 
     def updatePos(self):
-        self.log(f'Getting position...')
+        #self.log(f'Getting position...')
         self.address_input = self.getPos("address_input")
         self.request_btn = self.getPos("request_btn")
         
@@ -33,6 +33,7 @@ class Tor:
                 self.updatePos()
                 if self.request_btn != None:
                     self.log(f'Request ready')
+                    self.updatePos()
                     if self.address_input != None:
                         self.log(f'Address input')
                         self.click(self.address_input)
@@ -49,7 +50,7 @@ class Tor:
         try:
             return pyautogui.locateCenterOnScreen('./sample/'+file+'.png', confidence = conf)
         except pyautogui.ImageNotFoundException:
-            return
+            return None
 
     def getAllPos(self, file, conf = 0.7):
         return pyautogui.locateAllOnScreen('./sample/'+file+'.png', confidence = conf)
