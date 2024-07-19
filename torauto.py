@@ -1,4 +1,4 @@
-import os, pyautogui
+import os, pyautogui, pyscreeze
 import time
 from datetime import datetime
 from dotenv import load_dotenv
@@ -41,10 +41,13 @@ class Tor:
             self.wait(5)
 
     def getPos(self, file, conf = 0.95):
-        return pyautogui.locateCenterOnScreen('./sample/'+file+'.png', confidence = conf)
+        try:
+            return pyscreeze.locateCenterOnScreen('./sample/'+file+'.png', confidence = conf)
+        except Exception as e:
+            return None
 
     def getAllPos(self, file, conf = 0.7):
-        return pyautogui.locateAllOnScreen('./sample/'+file+'.png', confidence = conf)
+        return pyscreeze.locateAllOnScreen('./sample/'+file+'.png', confidence = conf)
 
     def refreshTor(self):        
         self.log('Refresh Tor')
