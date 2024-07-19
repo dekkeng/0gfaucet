@@ -10,7 +10,7 @@ load_dotenv("config.txt")
 
 class Tor:
     def updatePos(self):
-        self.log(f'Getting position...')
+        #self.log(f'Getting position...')
         self.address_input = self.getPos("address_input")
         self.request_btn = self.getPos("request_btn")
         self.fail = self.getPos("fail")
@@ -24,9 +24,9 @@ class Tor:
 
             self.updatePos()
             if self.request_btn != None:
-                self.log(f'Request ready')
+                #self.log(f'Request ready')
                 if self.address_input != None:
-                    self.log(f'Address input')
+                    #self.log(f'Address input')
                     self.click(self.address_input)
                     self.wait(1)
                     self.key(addr)
