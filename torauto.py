@@ -47,10 +47,7 @@ class Tor:
                 self.wait(5)
 
     def getPos(self, file, conf = 0.95):
-        try:
-            return pyautogui.locateCenterOnScreen('./sample/'+file+'.png', confidence = conf)
-        except pyautogui.ImageNotFoundException:
-            return None
+        return pyautogui.locateCenterOnScreen('./sample/'+file+'.png', confidence = conf)
 
     def getAllPos(self, file, conf = 0.7):
         return pyautogui.locateAllOnScreen('./sample/'+file+'.png', confidence = conf)
