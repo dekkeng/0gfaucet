@@ -19,6 +19,7 @@ class Tor:
         self.success = self.getPos("success")
  
     def start(self, addr):
+        count = 0
         timeout = time.time() + 60*self.TOR_TIMEOUT
         while True:
             if self.TOR_TIMEOUT != 0 and time.time() > timeout:
@@ -38,10 +39,16 @@ class Tor:
                 
             if self.fail != None:
                 self.click(self.fail)
-                break
+                count = count+1
+                if count > 3:
+                    self.log('Skipped')
+                    break
+                self.log(f'Failed, retrying [{count}/3]...')
+                self.refreshTor()
             
             if self.success != None:
                 self.click(self.success)
+                self.log(f'Success')
                 break
 
             self.wait(5)
