@@ -9,8 +9,6 @@
 ส่วนของ Desktop Gen Wallet
 -------------------
 
-ต้องมีรัน 0g node ที่ sync เรียบร้อยแล้ว
-
 1. ติดตั้ง python (แนะนำ 3.10), git, ต้องมี Tor Browser ในเครื่องลงไว้
 
 2. เปิด Powershell, หรือ Terminal
@@ -27,6 +25,9 @@ pip install -r requirements.txt
 4. แก้ไขไฟล์ config.txt
 ```
 GEN_AMOUNT คือจำนวนกระเป๋าที่ต้องการสร้างต่อครั้งที่รัน gen
+TOR_TIMEOUT คือเวลาที่ขอต่อกระเป๋าถ้าเกินจำนวนนาทีนี้จะข้ามไปกระเป๋าถัดไป
+TOR_PATH เป็น path ไปที่ Tor Browser
+START_ADDR หากต้องการรันต่อจากรอบก่อน ให้ระบุลำดับกระเป๋าที่ต้องการเริ่ม
 ```
 
 5. แก้ไขไฟล์ proxy.txt เป็นรายการ proxy ของคุณบรรทัดละ 1 ตัว เช่น
@@ -59,17 +60,17 @@ python gen.py
 ส่วนของ Desktop ขอ Faucet
 -------------------
 
-1. ใช้ Tor Browser ที่ติดตั้ง Extension Nopecha และใส่ API key บน Extension เปลี่ยนใหม่ทุกวัน
+1. ใช้ Tor Browser ที่ติดตั้ง Extension Nopecha และใส่ API key บน Extension และตั้งค่า home เป็น https://faucet.0g.ai/
 
-2. เข้า https://faucet.0g.ai/
-
-3. รัน torauto.py
+2. รัน torauto.py
 
 -------------------
 ส่วนของ VPS
 -------------------
 
 จะเป็นส่วนของการ delegate แต่ละกระเป๋าไปที่ node หลัก
+
+ต้องมีรัน 0g node ที่ sync เรียบร้อยแล้ว
 
 1. รัน
 ```

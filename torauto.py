@@ -102,6 +102,7 @@ class Tor:
 time.sleep(3)
 
 def main():
+    START_ADDR = int(os.getenv('START_ADDR', 1))
     TOR_PATH = os.getenv('TOR_PATH', 'C:/Users/WIN/Desktop/Tor Browser/Browser/firefox.exe')
     os.startfile(TOR_PATH)
     time.sleep(10) 
@@ -111,14 +112,20 @@ def main():
     try:
         f = open("addrs.txt", "r")
         lines = f.readlines()
-        count = 1
+        count = 0
         total = len(lines)
+
+        if START_ADDR > 1:
+            tor.log(f'Continue from address {START_ADDR}')
+
         for addr in lines:
+            count = count+1
+            if count < START_ADDR:
+                continue
             addr = addr.replace("\n", "")
             tor.log(f'[{count}/{total}] Getting faucet of account={addr}...')
             tor.start(addr)
             tor.refreshTor()
-            count = count+1        
         tor.quitTor()
     except Exception as e:
         tor.log(e)
