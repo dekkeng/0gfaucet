@@ -9,7 +9,12 @@ load_dotenv("config.txt")
 
 class Tor:
     def __init__(self):
+        self.tor_tab = self.getPos("tor_tab")
         self.TOR_TIMEOUT = float(os.getenv('TOR_TIMEOUT', 30))
+        if self.tor_tab != None:
+            self.click(self.tor_tab)
+            self.wait(1)
+            self.quitTor()
 
     def updatePos(self):
         #self.log(f'Getting position...')
@@ -101,13 +106,13 @@ class Tor:
 
 time.sleep(3)
 
-def main():
+def main():    
+    tor = Tor()
+    
     START_ADDR = int(os.getenv('START_ADDR', 1))
     TOR_PATH = os.getenv('TOR_PATH', 'C:/Users/WIN/Desktop/Tor Browser/Browser/firefox.exe')
     os.startfile(TOR_PATH)
-    time.sleep(10) 
-    
-    tor = Tor()
+    time.sleep(5) 
     
     try:
         f = open("addrs.txt", "r")
